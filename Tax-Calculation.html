@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax-Calculation</title>
+    <link rel="stylesheet" href="Style-Tax.css">
+</head>
+
+<body>
+    <header>
+        <h1>Tax-Calculation</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="Y-Money.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Value Added Tax (VAT)</h2>
+            <p>In January 2018, a Value Added Tax (VAT) of 5% was imposed on most goods and services in the Kingdom
+                of Saudi Arabia. To calculate the tax amount,
+                you can use the following :</p>
+            <form>
+                <label for="goods">Enter the value of the goods or service:</label>
+                <input type="number" id="goods" min="0" placeholder="Total Interest Amoun" required>
+                <span class="error" id="goodsErrors"></span>
+                <br>
+                <button type="button" onclick="calculateTax()">Calculate</button>
+            </form>
+
+        </section>
+        <section>
+            <h2>Income Tax: </h2>
+            <p>Income tax is imposed on individuals and companies based on their profits.
+                In Saudi Arabia, income tax rates are applied to both local and foreign individuals and companies.
+                The rates may vary depending on the type of income and the tax entity.</p>
+            <form>
+                <label for="income"> Annual Income</label>
+                <input type="number" id="income" min="0" required
+                    placeholder="The total amount of income earned during the tax year.">
+                <span class="error" id="incomeErrors"></span>
+                <br>
+                <label for="expenses"> Deductible Expenses</label>
+                <input type="number" id="expenses" min="0" required
+                    placeholder="Specific expenses that can be subtracted from the gross income to calculate the taxable net income">
+                <span class="error" id="expensesErrors"></span>
+                <br>
+                <button onclick="calculateTaxForPerson()">Calculate</button>
+            </form>
+        </section>
+    </main>
+</body>
+<!-- Javascript -->
+<script>
+
+    function calculateTax() {
+
+        const goodsValue = document.getElementById("goods").value
+        const error = document.getElementById("goodsErrors")
+        if (goodsValue == "") {
+            error.textContent = "Please Enter Vlue";
+            return
+        }
+        // Check if the entered value is a valid number
+        if (/^[0-9]+$/.test(goodsValue)) {
+            // Assuming tax rate is 5%
+            var taxRate = 0.05;
+            // Convert the goods value to a number
+            var goodsValueNumber = parseFloat(goodsValue);
+            // Calculate tax by multiplying the goods value by the tax rate
+            var tax = goodsValueNumber * taxRate;
+            // Display the calculated tax
+            alert('Tax for ' + goodsValueNumber + ' is: ' + tax);
+            error.textContent = ""
+        } else {
+            // Display an error if the entered value is not a valid number
+            alert('Please enter a valid number for goods value.');
+        }
+    }
+    function calculateTaxForPerson() {
+
+        const incomeValue = document.getElementById("income").value
+        const expensesValue = document.getElementById("expenses").value
+        const incomeErrors = document.getElementById("incomeErrors")
+        const expensesErrors = document.getElementById("expensesErrors")
+        if (incomeValue == "") {
+            incomeErrors.textContent = "Please Enter income Value"
+            return
+        }
+        if (expensesValue == "") {
+            expensesErrors.textContent = "Please Enter income Value"
+            return
+        }
+
+        // Check if the entered value is a valid number
+        if (/^[0-9]+$/.test(incomeValue) && /^[0-9]+$/.test(expensesValue)) {
+            const result = parseFloat(incomeValue) - parseFloat(expensesValue)
+            // Assuming tax rate is 5%
+            var taxRate = 0.05;
+            // Convert the goods value to a number
+            var resultValueNumber = parseFloat(result);
+            // Calculate tax by multiplying the goods value by the tax rate
+            var tax = resultValueNumber * taxRate;
+            // Display the calculated tax
+            alert('Tax for ' + incomeValue + '-' + expensesValue + '=' + result + ' is: ' + parseFloat(tax).toFixed(3));
+            <!-- Rest Error -->
+            incomeErrors.textContent = ""
+            expensesErrors.textContent = ""
+        } else {
+            // Display an error if the entered value is not a valid number
+            alert('Please enter a valid number for goods value.');
+        }
+    }
+</script>
+
+</html>

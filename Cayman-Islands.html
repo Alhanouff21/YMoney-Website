@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cayman Islands Dollar (KYD)</title>
+    <link rel="stylesheet" href="Style-Tax.css">
+</head>
+
+<body>
+    <header>
+        <h1>Cayman Islands Dollar (KYD))</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="Y-Money.html">Home</a></li>
+        </ul>
+    </nav>
+    <section>
+        <p class="A">The Cayman Islands dollar is in a tie for sixth among the strongest currencies in the world, with 1
+        Cayman dollar buying 1.20 dollars (or $1 equals 0.83 Cayman Islands dollar).
+        The Caymans are a British territory in the Caribbean and are an offshore financial center.
+        The Cayman Islands dollar was first introduced in the 1970s and is pegged to the dollar.</p>
+    </section>
+    <section>
+        <form>
+            <label id="Choose">Select the currency you want to convert from</label><br>
+            <select name="Currency" id="Currency1">
+                <option value="Saudi">Saudi Riyal</option>
+                <option value="dollar">American dollar</option>
+                <option value="Euro">Euro</option>
+                <option value="UAE">UAE dirham</option>
+                <option value="Chinese">Chinese Renminbi</option>
+            </select>
+            <span class="error" id="currencyError"></span>
+            <br>
+            <label for="Amount">Specify the amount you would like to convert</label><br>
+            <input id="Amount" type="number" min="1">
+            <span class="error" id="amountError"></span>
+            <br>
+            <button type="button" onclick="calculateConversion()">Calculate</button>
+            <div id="result"></div>
+        </form>
+    </section>
+</body>
+<script>
+    function calculateConversion() {
+        var selectedCurrency = document.getElementById('Currency1').value;
+        var amountToConvert = document.getElementById('Amount').value;
+        var resultSpan = document.getElementById('result');
+        var currencyError = document.getElementById('currencyError');
+        var amountError = document.getElementById('amountError');
+        let result = null
+        if (selectedCurrency == "Saudi") {
+            result = parseFloat(amountToConvert * 0.22)
+        }
+        if (selectedCurrency == "dollar") {
+            result = parseFloat(amountToConvert * 0.83)
+        }
+        if (selectedCurrency == "Euro") {
+            result = parseFloat(amountToConvert * 0.90)
+        }
+        if (selectedCurrency == "UAE") {
+            result = parseFloat(amountToConvert * 0.23)
+        }
+        if (selectedCurrency == "Chinese") {
+            result = parseFloat(amountToConvert * 0.12)
+        }
+        resultSpan
+        if (selectedCurrency == "") {
+            currencyError.textContent = "Please select Currency "
+            return
+        }
+        if (amountToConvert == "") {
+            amountError.textContent = "Please Enter  amount"
+            return
+        }
+
+        resultSpan.textContent = `The ${amountToConvert}  
+        ${selectedCurrency} = ${result} Cayman Islands Dollar `;
+        currencyError.textContent = ""
+        amountError.textContent = ""
+    }
+</script>
+
+</html>

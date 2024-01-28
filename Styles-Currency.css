@@ -1,0 +1,59 @@
+/* المحتوى */
+main {
+ 
+  justify-content: center;
+}
+.section-card {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: calc(30% - 10px); /* تقليل المساحة بمقدار 10px للجوانب */
+  margin: 30px; /* إضافة هامش للجوانب */
+}
+
+.section-card h4 {
+  margin-top: 10px;
+  font-size: 24px;
+  font-style: italic;
+}
+
+.section-card p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
+  font: 1em sans-serif;
+  line-height: 2;
+}
+
+.section-card button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius:7px;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.section-card button:hover {
+  background-color: #1a8448;
+}
+
+
+
+/* لجعل الكارد ملئ الشاشة في الشاشات التي اقل من 600بكسل */
+@media (max-width:600px) {
+  .section-card {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 100%; /* تقليل المساحة بمقدار 10px للجوانب */
+  margin: 30px; /* إضافة هامش للجوانب */
+}
+}

@@ -1,0 +1,131 @@
+/* إعدادات عامة */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: content-box;
+}
+/* العنوان */
+header {
+  background-color: #2ecc71;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+/* قائمة التنقل */
+nav ul {
+  list-style: none;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  background-color: #e5e5e5;
+}
+
+nav ul li {
+  margin: 4px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #c4c2c2;
+  border-radius: 10px;
+}
+
+/* المحتوى */
+main {
+  padding: 20px;
+}
+
+section {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 96%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+section p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.A {
+  text-align: center;
+  text-decoration: double;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="number"] {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 20px;
+}
+input[type="number"]:focus {
+ outline: none;
+  border: 1px solid #2ecc71;
+}
+select{
+ padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 20px;
+}
+select:focus {
+  outline: none;
+  border: 1px solid #2ecc71;
+}
+span{
+  color: red;
+}
+#result{
+  text-align: center;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1a8448;
+}

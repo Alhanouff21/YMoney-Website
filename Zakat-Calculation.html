@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakat-Calculation</title>
+    <link rel="stylesheet" href="Style-Tax.css">
+
+</head>
+
+<body>
+    <header>
+        <h1 class="Title">Zakat-Calculation</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="Y-Money.html">Home</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <p class="A"> To calculate Zakat, you need to know the value of your assets and possessions,
+                including cash, bank accounts, real estate, investments, gold, and silver.</p>
+        </section>
+        <section>
+            <form>
+                <label for="cash">Cash</label>
+                <input type="number" id="cash" min="0"
+                    placeholder="The value of money and funds you own in banks and at home"><br>
+                <span class="error" id="cashErrors"></span>
+                <label for="gold"> Gold and Silver</label>
+                <input type="number" id="gold" min="0" placeholder="The value of precious metals you possess."><br>
+                <span class="error" id="goldErrors"></span>
+                <label for="Land">Land and Real Estate</label>
+                <input type="number" id="Land" min="0"
+                    placeholder="The value of properties, lands, and other real estate you own."><br>
+                <span class="error" id="LandErrors"></span>
+                <label for="Stocks"> Stocks and Investments</label>
+                <input type="number" id="Stocks" min="0"
+                    placeholder="The value of stocks, securities, and financial investments."><br>
+                <span class="error" id="StocksErrors"></span>
+                <label for="Businesses"> Businesses and Capital Profits</label>
+                <input type="number" id="Businesses" min="0"
+                    placeholder="If you own businesses or commercial investments."><br>
+                <span class="error" id="BusinessesErrors"></span>
+                <label for="Debts"> Debts and Liabilities</label>
+                <input type="number" id="Debts" min="0"
+                    placeholder="There might be certain debts or obligations that can be deducted.">
+                <span class="error" id="DebtsErrors"></span>
+                <br>
+                <button type="button" onclick="zakatCalculation()">Calculate</button>
+                <div id="resultDiv"></div>
+
+            </form>
+        </section>
+    </main>
+</body>
+<script>
+    function zakatCalculation() {
+        var cashValue = document.getElementById('cash').value;
+        var goldValue = document.getElementById('gold').value;
+        var LandValue = document.getElementById('Land').value;
+        var StocksValue = document.getElementById('Stocks').value;
+        var BusinessesValue = document.getElementById('Businesses').value;
+        var DebtsValue = document.getElementById('Debts').value;
+
+        var cashErrors = document.getElementById('cashErrors');
+        var goldErrors = document.getElementById('goldErrors');
+        var LandErrors = document.getElementById('LandErrors');
+        var StocksErrors = document.getElementById('StocksErrors');
+        var BusinessesErrors = document.getElementById('BusinessesErrors');
+        var DebtsErrors = document.getElementById('DebtsErrors');
+
+        if (cashValue == "" && goldValue == "" && LandValue == "" &&
+            StocksValue == "" && BusinessesValue == "" && DebtsValue == "") {
+            // Display an error if the entered value is not a valid number
+            alert('Please The Field Is requerd.');
+            return
+        }
+        let result = 0;
+        if (cashValue) {
+            if (parseInt(cashValue) >= 1000) {
+                result = parseFloat(result) + parseFloat(cashValue)
+            }
+            else {
+                cashErrors.textContent = "the cash less then 1000";
+                return
+            }
+        }
+        /* *************************** */
+        if (goldValue) {
+            if (goldValue >= 1000) {
+                result = parseFloat(result) + parseFloat(goldValue)
+            }
+            else {
+                goldErrors.textContent = "the gold less then 1000";
+                return
+            }
+
+        }
+        /* ***********LandValue**************** */
+
+        if (LandValue) {
+            if (LandValue >= 1000) {
+                result = parseFloat(result) + parseFloat(LandValue)
+            }
+            else {
+                LandErrors.textContent = "the LandValue less then 1000";
+                return
+            }
+
+        }
+        /* ***********StocksValue**************** */
+
+        if (StocksValue) {
+            if (StocksValue >= 1000) {
+                result = parseFloat(result) + parseFloat(StocksValue)
+            }
+            else {
+                StocksErrors.textContent = "the LandValue less then 1000"
+                return
+            }
+
+        }
+        /* ***********BusinessesValue**************** */
+
+        if (BusinessesValue) {
+            if (BusinessesValue >= 1000) {
+                result = parseFloat(result) + parseFloat(BusinessesValue)
+            }
+            else {
+                BusinessesErrors.textContent = "the LandValue less then 1000"
+                return
+            }
+
+        }
+        /* ***********DebtsValue**************** */
+        if (DebtsValue) {
+            result = parseFloat(result) - parseFloat(DebtsValue)
+        }
+
+        <!-- *********************** -->
+
+        const finalResult = result * 0.025
+
+
+
+        resultDiv.textContent = `Zakat = ${result} * 
+         0.025 ==> ${finalResult}`;
+
+        cashErrors.textContent = ""
+        goldErrors.textContent = ""
+        LandErrors.textContent = ""
+        StocksErrors.textContent = ""
+        BusinessesErrors.textContent = ""
+    }
+</script>
+
+</html>

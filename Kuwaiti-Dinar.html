@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuwaiti Dinar (KWD)</title>
+    <link rel="stylesheet" href="Style-Tax.css">
+</head>
+
+<body>
+    <header>
+        <h1>Kuwaiti Dinar (KWD)</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="Y-Money.html">Home</a></li>
+        </ul>
+    </nav>
+    <section>
+        <p class="A">The Kuwaiti Dinar is the official currency of the state of Kuwait, issued by the Central Bank of
+            Kuwait currently. The first Kuwaiti Dinar was introduced to the markets in 1960,
+            replacing the Indian Rupee that was previously in use. Subsequently, the Central Bank of Kuwait issued six
+            other currency releases, with the latest in 2014, announced on May 19, 2014.
+            The Kuwaiti Dinar is divided into 1000 fils and is currently considered to have the highest exchange rate in
+            the world. As of June 2008, the exchange rate of the Kuwaiti Dinar was approximately 3.78 US dollars and 2.4
+            euros.
+            The first series of the twenty dinar denomination was released on February 9, 1986.</p>
+    </section>
+    <section>
+        <form>
+            <label id="Choose">Select the currency you want to convert from</label><br>
+            <select name="Currency" id="Currency1">
+                <option value="Saudi">Saudi Riyal</option>
+                <option value="dollar">American dollar</option>
+                <option value="Euro">Euro</option>
+                <option value="UAE">UAE dirham</option>
+                <option value="Chinese">Chinese Renminbi</option>
+            </select>
+            <span class="error" id="currencyError"></span>
+            <br>
+            <label for="Amount">Specify the amount you would like to convert</label><br>
+            <input id="Amount" type="number" min="1">
+            <span class="error" id="amountError"></span>
+            <br>
+            <button type="button" onclick="calculateConversion()">Calculate</button>
+            <div id="result"></div>
+        </form>
+    </section>
+</body>
+<script>
+    function calculateConversion() {
+        var selectedCurrency = document.getElementById('Currency1').value;
+        var amountToConvert = document.getElementById('Amount').value;
+        var resultSpan = document.getElementById('result');
+        var currencyError = document.getElementById('currencyError');
+        var amountError = document.getElementById('amountError');
+        let result = null
+
+        if (selectedCurrency == "Saudi") {
+            result = parseFloat(amountToConvert * 0.081)
+
+        }
+        if (selectedCurrency == "dollar") {
+            result = parseFloat(amountToConvert * 0.305)
+        }
+        if (selectedCurrency == "Euro") {
+            result = parseFloat(amountToConvert * 0.327)
+        }
+        if (selectedCurrency == "UAE") {
+            result = parseFloat(amountToConvert * 0.083)
+        }
+        if (selectedCurrency == "Chinese") {
+
+            result = parseFloat(amountToConvert * 0.0430)
+        }
+        resultSpan
+        if (selectedCurrency == "") {
+            currencyError.textContent = "Please select Currency "
+            return
+        }
+        if (amountToConvert == "") {
+            amountError.textContent = "Please Enter  amount"
+            return
+        }
+
+        resultSpan.textContent = `The ${amountToConvert}  
+        ${selectedCurrency} = ${result} Kuwaiti Dinar`;
+        currencyError.textContent = ""
+        amountError.textContent = ""
+    }
+</script>
+
+</html>

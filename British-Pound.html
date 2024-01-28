@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>British Pound (GBP)</title>
+    <link rel="stylesheet" href="Style-Tax.css">
+</head>
+
+<body>
+    <header>
+        <h1>British Pound (GBP)</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="Y-Money.html">Home</a></li>
+        </ul>
+    </nav>
+    <section>
+        <p class="A">The British pound is the fifth-strongest currency in the world, with 1 pound buying 1.22 dollars
+            (or $1
+            equals 0.892 British pound).</p>
+    </section>
+    <section>
+        <form>
+            <label id="Choose">Select the currency you want to convert from</label><br>
+            <select name="Currency" id="Currency1">
+                <option value="Saudi">Saudi Riyal</option>
+                <option value="dollar">American dollar</option>
+                <option value="Euro">Euro</option>
+                <option value="UAE">UAE dirham</option>
+                <option value="Chinese">Chinese Renminbi</option>
+            </select>
+            <span class="error" id="currencyError"></span>
+            <br>
+            <label for="Amount">Specify the amount you would like to convert</label><br>
+            <input id="Amount" type="number" min="1">
+            <span class="error" id="amountError"></span>
+            <br>
+            <button type="button" onclick="calculateConversion()">Calculate</button>
+            <div id="result"></div>
+        </form>
+    </section>
+</body>
+<script>
+    function calculateConversion() {
+        var selectedCurrency = document.getElementById('Currency1').value;
+        var amountToConvert = document.getElementById('Amount').value;
+        var resultSpan = document.getElementById('result');
+        var currencyError = document.getElementById('currencyError');
+        var amountError = document.getElementById('amountError');
+        let result = null
+        if (selectedCurrency == "Saudi") {
+            result = parseFloat(amountToConvert * 0.212)
+        }
+        if (selectedCurrency == "dollar") {
+            result = parseFloat(amountToConvert * 0.892)
+        }
+        if (selectedCurrency == "Euro") {
+            result = parseFloat(amountToConvert * 0.761)
+        }
+        if (selectedCurrency == "UAE") {
+            result = parseFloat(amountToConvert * 0.216)
+        }
+        if (selectedCurrency == "Chinese") {
+            result = parseFloat(amountToConvert * 0.110)
+        }
+        resultSpan
+        if (selectedCurrency == "") {
+            currencyError.textContent = "Please select Currency "
+            return
+        }
+        if (amountToConvert == "") {
+            amountError.textContent = "Please Enter  amount"
+            return
+        }
+
+        resultSpan.textContent = `The ${amountToConvert}  
+        ${selectedCurrency} = ${result} British Pound`;
+        currencyError.textContent = ""
+        amountError.textContent = ""
+    }
+</script>
+
+</html>
